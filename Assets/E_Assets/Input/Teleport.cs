@@ -4,9 +4,7 @@ using UnityEngine;
 
 
 namespace Euclid
-{
-
-    
+{   
     public class Teleport : MonoBehaviour
     {
         [SerializeField] private BoxCollider teleportCollider;

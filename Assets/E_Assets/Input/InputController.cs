@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace Euclid
@@ -16,25 +16,28 @@ namespace Euclid
         [SerializeField] private Transform _objectGrabPointTransform;
         private ObjectGrable _objectGrabble;
 
+        public RaycastHit rayHit;
+
         private float _distance;
         private float _kScale;
-        private bool _isGrabbing = false;
+        public bool _isGrabbing = false;
 
         private void Update()
         {
             MovementAndTurning();
             DragAndDrop();
+            Physics.Raycast(_playerCameraTransform.position, _playerCameraTransform.forward, out rayHit, _pickupDistance);
+            //Debug.Log(rayHit.point);
         }
 
         private void DrawLine()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
             Debug.DrawRay(ray.origin, ray.direction * 20, Color.white, 2.0f);
         }
 
         private void DragAndDrop()
-        {
+        {            
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 DrawLine();
@@ -74,8 +77,7 @@ namespace Euclid
 
         private void GetProportion()
         {
-            Debug.Log("Setting");
-            _distance = Vector3.Distance(GetComponentInChildren<Camera>().transform.position, _objectGrabble.transform.position); //distance between player and obj
+            _distance = Vector3.Distance(GetComponentInChildren<Camera>().transform.position, _objectGrabble.transform.position); 
             var objScale = _objectGrabble.transform.localScale;
             _kScale = _distance / objScale.x;
             Debug.Log($"distance = {_distance} || objScale = {objScale} || k = {_kScale}");

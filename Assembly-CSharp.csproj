@@ -58,11 +58,11 @@
   <ItemGroup>
     <Compile Include="Assets\E_Assets\Input\Teleport.cs" />
     <Compile Include="Assets\E_Assets\DistanceBetweenTwoObjects.cs" />
+    <Compile Include="Assets\E_Assets\Rotation.cs" />
     <Compile Include="Assets\E_Assets\EvironmentPrefabs\TrianglePrimitive\TrianglePrimitive.cs" />
     <Compile Include="Assets\E_Assets\Input\InputController.cs" />
     <Compile Include="Assets\E_Assets\EvironmentPrefabs\SerializeMesh.cs" />
     <Compile Include="Assets\E_Assets\Input\ObjectGrable.cs" />
-    <Compile Include="Assets\E_Assets\Rotation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
